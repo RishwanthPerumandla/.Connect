@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+
+          .col-md-3 img{
+
+          width: 235px;
+          height: 200px;
+          }
+
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+
+          body .carousel-indicators{
+          bottom: -25px;
+          }
+
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+
+          .carousel-control-prev,
+          .carousel-control-next{
+          top: auto;
+          bottom: auto;
+          padding-top: 210px;
+          width: 2%;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+
+           .backimg1{
+            background-image: url({% static 'img/812.jpg' %});
+            background-size: contain;
+            width: 100%;
+            height:100vh;
+            background-repeat: repeat-x;  
+
+            }
+            .imgabout{
+            margin-top:-190px;
+            margin-left:-380px;
+              height: 350px;
+            }
+            .imgabout1{
+              margin-top: -190px;
+              margin-right:-350px;
+              height: 300px;
+            }
+            .container{
+            background-image: url({% static 'img/sky1.jpg' %});
+            background-size: cover;
+          }
+        .btn{
+        position: relative;
+        background-color: #33b5e5;
+        color: white;
+        font-size: 14px;
+        font-family: "montserrat";
+        text-decoration: none;
+        
+        border: 2px solid #ff7675;
+        padding: 14px 60px;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 1s all ease;
+      }
+      .btn::before{
+        background: #ff7675;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: -1;
+        transition: all 0.6s ease;
+      }
+
+      .btn3::before{
+        width: 100%;
+        height: 0%;
+        transform: translate(-50%,-50%) rotate(45deg);
+      }
+      .btn3:hover::before{
+        height: 380%;
+      }
+
+ {% endblock %}
+
+
+
+{% block body %}
+
+{% load static %}
+{% block main %}
+<div class="overflow-hidden text-center bg-light backimg1">
+  <div class="col-md-5 p-lg-5 mx-auto my-8"><br><br><br><br>
+    <img src="{% static 'img/logo.jpeg' %}" class="display-4 font-weight-normal animated zoomIn" style="height: 160px;margin-top: 90px;">
+    <p class="lead font-weight-normal animated lightSpeedIn">And an even Jumpstart your marketing efforts.</p>
+    <a class="btn btn3  animated wobble" href="blog/" style="font-size: 18px;padding: 15px 27px;">AACFORUMS</a><br>
+    <a class="btn btn3 animated wobble" href="{% url 'create' %}" style="font-size: 18px;padding: 15px 27px;margin-top: 25px;">SELL</a>
+    <a class="btn btn3 animated wobble" href="{% url 'detail' %}" style="font-size: 18px;padding: 15px 27px;margin-top:25px;margin-left: 35px;">BUY</a>
+  </div>
+  
+</div>
+{% endblock %}
+ {% block about %} 
+<!-- ABOUTPANEL-->
+<div class="overflow-hidden p-md-5 m-md-3 text-center about">
+ <div class="about">
+        <h2 style="margin-top:-20px;text-align: center;font-size: 3.55em;font-family: Advent Pro; font-weight: 600;letter-spacing: 2px;color: : #fff;">Wanna know how to use this web app</h1>
+      <img src="{% static 'img/img22.png' %}" class="imgabout">
+     <iframe  style="border-radius: 20px;" width="560" height="315" src="https://www.youtube.com/embed/eYxghksxdFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <img src="{% static 'img/img24.png' %}" class="imgabout1">
+   
+ </div>
+
+ 
+</div>
+ {% endblock %}
+<br><br><br>
+<div style="background-color: #33b5e5;border-radius: 30px; ">
+
+<div class="container">
+      <h1 style="text-align: center;font-size: 3.55em;font-family: Advent Pro; font-weight: 600;letter-spacing: 2px;color: : #fff;">Featured Products</h1>
+      <br>
+<div id="demo" class="carousel slide my-3" data-ride="carousel">
+
+  <br><br>
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+    <!--Slideshow starts here -->
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="border-radius: 10px;" >
+            <img src='/media/{{product.0.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.0.title}}</h5>
+                <p class="card-text">{{product.0.description}}</p>
+                <a href="{% url 'product_detailed_view' my_id=product.0.id %}" class="btn btn-primary">Request</a>
+            </div>
+          </div>
+       </div>
+
+
+        {% for i in product|slice:"1:"%}
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="border-radius: 20px;">
+            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.title}}</h5>
+              <p class="card-text">{{i.description}}</p>
+              <a href="{% url 'product_detailed_view' my_id=i.id %}" class="btn btn-primary">Request</a>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div><div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+  <br><br><br>
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+
+       {% for i in range %}
+      <li data-target="#demo" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+<!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+</div>
+
+ 
+</div>
+</div>
+
+ {% endblock %}
+
+</div>

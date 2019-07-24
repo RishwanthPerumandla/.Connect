@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block createform %}
+<h1 style="text-align: center;"><a href="{% url 'home' %}">Back to Home</a></h1>
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+        	<h2 style="text-align: center;">Fill in the details</h2>
+			<form  method="POST" enctype="multipart/form-data"> {% csrf_token %}
+				{{ form|crispy }}
+				 <input type='submit' value='save' />
+			</form>
+
+				</div>
+			</div>
+			</div>
+
+			</div>
+{% endblock %}
+s
