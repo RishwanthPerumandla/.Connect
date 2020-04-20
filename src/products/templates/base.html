@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+      <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Overlock&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Lobster|Love+Ya+Like+A+Sister|Pacifico|Saira+Stencil+One&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Advent+Pro&display=swap" rel="stylesheet">
@@ -17,20 +26,20 @@
   </style>
   </head>
   <body>
- 
+
 
   {% block body %}
-         {% block main %} 
+         {% block main %}
             {% endblock %}
 
-            {% block about %} 
+            {% block about %}
             {% endblock %}
    {% endblock %}
 
- {% block createform %} 
+ {% block createform %}
  {% endblock %}
 
-  {% block buyform %} 
+  {% block buyform %}
  {% endblock %}
 {% block featured%}
 {% endblock %}

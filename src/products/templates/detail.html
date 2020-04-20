@@ -1,109 +1,184 @@
 {% extends 'base.html' %}
 {% block css %}
-          .col-md-3
+ 
+
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.7;
+  z-index: -2;
+}
+
+
+          .col-xs-3
           {
           display: inline-block;
-          margin-left:-4px;
+          margin-left:0px;
+
           }
-
-          .carousel-indicators .active {
-          background-color: blue;
-            }
-
           .col-md-3 img{
 
           width: 270px;
           height: 200px;
           }
+       .box-container {
+  padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 38px;
+    text-align:center;
+  
+}
 
-          body .carousel-indicator li{
+.box{
+  display:block;
+  background-color: #f5f5f6;
+  width:300px;
+  height:400px;
+    margin:auto auto;
+  box-shadow:0 5px 5px rgba(0,0,0,.2);
+transition: .25s;
+transition: box-shadow .3s;
+border-radius:20px;
+}
+.content{
+  display:block;
+}
+.img_box{
+  display:block;
+  width:300px;
+  height:200px;
+  overflow:hidden;
+cursor: pointer;
+}
+.box img{
+  transition: .25s;
+  width: 100%;
+  border-radius:20px;
+}
+.box-img{
+  width:300px;
+  height:200px;
+}
+h3.describtion {
+    padding-left:5px;
+     padding-top:35px;
+}
+h3.describtion a {
+    text-decoration: none;
+    color: #000;
+    transition: color .25s ease-in;
+    margin-top:0px;
+    font-size: 30px;
 
-          color: #33b5e5
-          }
-
-          body .carousel-indicators{
-          bottom: -38px;
-          }
-
-          body .carousel-control-prev-icon,
-          body .carousel-control-next-icon{
-          background-color: blue;
-          }
-
-          .carousel-control-prev,
-          .carousel-control-next{
-          top: auto;
-          bottom: auto;
-          padding-top: 210px;
-          width: 2%;
-          }
-           body .no-padding{
-           padding-left: 0,
-           padding-right: 0;
-           }
+}
+p.brief_title{
+  color: #820000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1.2;
+    margin-bottom:0px;
+    padding-left:5px;
+}
+p.time{
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+.brief{
+  padding:auto;
+padding-left:5px;
+}
+.box:hover .box-img{
+  transform: scale(1.1);
+} 
+.box:hover h3.describtion a {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: none;
+}
+.box:hover {
+    transform: scale(1.005);
+    box-shadow:0 6px 7px rgba(0,0,0,.5);
+}
+  
  {% endblock %}
 {% block body %}
 {% load static %}
-<div class="container">
 
-    <!--Slideshow starts here -->
-    {% for product, range, nSlides in allProds %}
-    <h5 class="my-4" style="text-align: center;font-size: 30px;">{{product.0.category}}</h5>
-<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
-    <ul class="carousel-indicators">
-      <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+<div class="background1">
+ 
+    <h1 style="text-align: center;"><a href="{% url 'home' %}">Back to Home</a></h1>
+  <div class="box-container" >
+    {% for product in products%}
+    
 
-       {% for i in range %}
-      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
-      {% endfor %}
-    </ul>
-
-
-    <div class="container carousel-inner no-padding">
-
-      <div class="carousel-item active">
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="width: 17rem;">
-            <img src='/media/{{product.0.image}}' class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{product.0.title}}</h5>
-                <p class="card-text">{{product.0.description}}</p>
-                <p>Rs.{{product.0.price}} </p>
-                <a href="{% url 'product_detailed_view' my_id=product.0.id %}" class="btn btn-primary">Request</a>
-            </div>
-          </div>
-       </div>
-
-        {% for i in product|slice:"1:"%}
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="width: 17rem;">
-            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{i.title}}</h5>
-              <p class="card-text">{{i.description}}{{i.id}}</p>
-                  <p>Rs.{{i.price}} </p>
-              <a href="{% url 'product_detailed_view' my_id=i.id %}" class="btn btn-primary">Request</a>
-            </div>
-          </div>
-        </div>
-        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
-      </div><div class="carousel-item">
-        {% endif %}
-
-        {% endfor %}
+   <div class="box">
+    <div class="img_box">
+    <img class="box-img" src='/media/{{product.image}}' >
     </div>
-  <br><br>
- <!-- left and right controls for the slide -->
-    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
-
-</div>
-</div>
    
+    <div class="content">
+    <div class="brief">
+    <p class="brief_title"></p>
+    </div>
+        <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p>Rs.{{product.price}} </p>
+                <a href="{% url 'product_detailed_view' my_id=product.id %}" class="btn btn-primary">Request</a>
+            </div>
+    </div>
+
+    </div>
     {% endfor %}
-</div>
+    
+  </div>
+  </div>
+
+<script type="text/javascript">
+  // Some random colors
+const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
+
+const numBalls = 150;
+const balls = [];
+
+for (let i = 0; i < numBalls; i++) {
+  let ball = document.createElement("div");
+  ball.classList.add("ball");
+  ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+  ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+  ball.style.top = `${Math.floor(Math.random() * 200)}vh`;
+  ball.style.transform = `scale(${Math.random()})`;
+  ball.style.width = `${Math.random()}em`;
+  ball.style.height = ball.style.width;
+  
+  balls.push(ball);
+  document.body.append(ball);
+}
+
+// Keyframes
+balls.forEach((el, i, ra) => {
+  let to = {
+    x: Math.random() * (i % 2 === 0 ? -11 : 11),
+    y: Math.random() * 12
+  };
+
+  let anim = el.animate(
+    [
+      { transform: "translate(0, 0)" },
+      { transform: `translate(${to.x}rem, ${to.y}rem)` }
+    ],
+    {
+      duration: (Math.random() + 1) * 2000, // random duration
+      direction: "alternate",
+      fill: "both",
+      iterations: Infinity,
+      easing: "ease-in-out"
+    }
+  );
+});
+</script>
+
+  
  {% endblock %}

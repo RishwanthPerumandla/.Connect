@@ -1,6 +1,158 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
+#hero {
+  width: 100%;
+  height: 100vh;
+  background: url({% static 'img/phone2.png' %}) top center;
+  background-size: cover;
+  position: relative;
+}
+ @media (min-width: 767px) {
+  #hero{
+    background-attachment: fixed;
+    background: url({% static 'img/plain.png' %}) top center;
+	  background-size: cover;
+    position:relative;
+    width: 100%;
+    height:400px;
+     }
+ }
+
+  @media (min-width: 1000px) {
+  #hero{
+    background-attachment: fixed;
+    background:url({% static 'img/plain.png' %}) top center;
+    background-size: cover;
+    position:relative;
+     width: 100%;
+     height:600px;
+     }
+ }
+
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+#hero .btn-get-started {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+#hero .btn-get-started:hover {
+  background: #2dc997;
+  border: 2px solid #2dc997;
+}
+
+
+
+
+/*------BUY AND SELL-----------*/
+.Buy{
+font-family: 'Cookie', cursive;
+font-size: 65vw;
+color:#ffffff;
+border: 0;
+background-color: transparent;
+cursor: pointer;
+z-index: 9999;
+padding-left: 20px;
+}
+.Sell{
+font-family: 'Cookie', cursive;
+font-size: 65vw;
+border: 0;
+color:#0d0d0d;
+background-color: transparent;
+cursor: pointer;
+z-index: 9999;
+padding-left: 20px;
+}
+.Buy:hover{
+ transform: scale(1.15);
+}
+.Sell:hover{
+ transform: scale(1.15);
+}
+
+@media(min-width: 768px){
+
+.Sell{
+  font-size: 28vw;
+  padding-left: 0px;
+}
+.Buy{
+  font-size: 28vw;
+  padding-right: 0px;
+}
+.containers{
+display: grid;
+grid-auto-columns: 1fr 1fr;
+grid-template-rows: 450px;
+}
+}
+
+
+
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+/* Sections Header
+--------------------------------*/
+.section-header .section-title {
+  font-size: 32px;
+  color: #111;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.section-header .section-description {
+  text-align: center;
+  padding-bottom: 40px;
+  color: #999;
+}
+
+
+
+
+
+#hero .btn-get-started {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+#hero .btn-get-started:hover {
+  background: #2dc997;
+  border: 2px solid #2dc997;
+}
           .col-md-3
           {
           display: inline-block;
@@ -13,7 +165,7 @@
 
           .col-md-3 img{
 
-          width: 235px;
+          width: 270px;
           height: 200px;
           }
 
@@ -47,7 +199,7 @@
             background-size: contain;
             width: 100%;
             height:100vh;
-            background-repeat: repeat-x;  
+            background-repeat: repeat-x;
 
             }
             .imgabout{
@@ -71,7 +223,7 @@
         font-size: 14px;
         font-family: "montserrat";
         text-decoration: none;
-        
+
         border: 2px solid #ff7675;
         padding: 14px 60px;
         text-transform: uppercase;
@@ -97,6 +249,15 @@
       .btn3:hover::before{
         height: 380%;
       }
+           @media (max-width: 768px) {
+          .imgabout{
+          height:0px;
+        }
+         .imgabout1{
+          height:0px;
+        }
+    }
+
 
  {% endblock %}
 
@@ -105,102 +266,36 @@
 {% block body %}
 
 {% load static %}
+       <div class=products style="font-family: Advent Pro;text-align: center;font-size: 40px;background: black;color: white;margin-right: 0;padding-top: 1px;padding-bottom: 1px;border-radius: 5px">.Connect</div>
+
 {% block main %}
-<div class="overflow-hidden text-center bg-light backimg1">
-  <div class="col-md-5 p-lg-5 mx-auto my-8"><br><br><br><br>
-    <img src="{% static 'img/logo.jpeg' %}" class="display-4 font-weight-normal animated zoomIn" style="height: 160px;margin-top: 90px;">
-    <p class="lead font-weight-normal animated lightSpeedIn">And an even Jumpstart your marketing efforts.</p>
-    <a class="btn btn3  animated wobble" href="blog/" style="font-size: 18px;padding: 15px 27px;">AACFORUMS</a><br>
-    <a class="btn btn3 animated wobble" href="{% url 'create' %}" style="font-size: 18px;padding: 15px 27px;margin-top: 25px;">SELL</a>
-    <a class="btn btn3 animated wobble" href="{% url 'detail' %}" style="font-size: 18px;padding: 15px 27px;margin-top:25px;margin-left: 35px;">BUY</a>
+ <section id="hero">
+<div class="containers">
+<div class="row">
+	<div class="col-lg col-md-6"><a href="{% url 'detail' %}"><button class='Buy'>Buy</button></a></div>
+	<div class="col-lg col-md-6"><a href="{% url 'create' %}"><button class='Sell'>Sell</button></a></div>
   </div>
-  
 </div>
+  </section><!-- #hero -->
 {% endblock %}
- {% block about %} 
+ {% block about %}
 <!-- ABOUTPANEL-->
 <div class="overflow-hidden p-md-5 m-md-3 text-center about">
  <div class="about">
-        <h2 style="margin-top:-20px;text-align: center;font-size: 3.55em;font-family: Advent Pro; font-weight: 600;letter-spacing: 2px;color: : #fff;">Wanna know how to use this web app</h1>
+        <h2 style="margin-top:-10px;text-align: center;font-size: 3.55em;font-family: Advent Pro; font-weight: 600;letter-spacing: 2px;color: : #fff;">Wanna know how to use this web app</h1>
       <img src="{% static 'img/img22.png' %}" class="imgabout">
-     <iframe  style="border-radius: 20px;" width="560" height="315" src="https://www.youtube.com/embed/eYxghksxdFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <iframe style="border-radius:20px;" width="560" height="315" src="https://www.youtube.com/embed/guPkwr-gz7M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
      <img src="{% static 'img/img24.png' %}" class="imgabout1">
-   
+
  </div>
 
- 
+
 </div>
  {% endblock %}
 <br><br><br>
-<div style="background-color: #33b5e5;border-radius: 30px; ">
-
-<div class="container">
-      <h1 style="text-align: center;font-size: 3.55em;font-family: Advent Pro; font-weight: 600;letter-spacing: 2px;color: : #fff;">Featured Products</h1>
-      <br>
-<div id="demo" class="carousel slide my-3" data-ride="carousel">
-
-  <br><br>
-    <ul class="carousel-indicators">
-      <li data-target="#demo" data-slide-to="0" class="active"></li>
-
-       {% for i in range %}
-      <li data-target="#demo" data-slide-to="{{i}}" ></li>
-      {% endfor %}
-    </ul>
-
-    <!--Slideshow starts here -->
-    <div class="container carousel-inner no-padding">
-
-      <div class="carousel-item active">
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="border-radius: 10px;" >
-            <img src='/media/{{product.0.image}}' class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{product.0.title}}</h5>
-                <p class="card-text">{{product.0.description}}</p>
-                <a href="{% url 'product_detailed_view' my_id=product.0.id %}" class="btn btn-primary">Request</a>
-            </div>
-          </div>
-       </div>
-
-
-        {% for i in product|slice:"1:"%}
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="border-radius: 20px;">
-            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{i.title}}</h5>
-              <p class="card-text">{{i.description}}</p>
-              <a href="{% url 'product_detailed_view' my_id=i.id %}" class="btn btn-primary">Request</a>
-            </div>
-          </div>
-        </div>
-        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
-      </div><div class="carousel-item">
-        {% endif %}
-
-        {% endfor %}
-    </div>
-  <br><br><br>
-    <ul class="carousel-indicators">
-      <li data-target="#demo" data-slide-to="0" class="active"></li>
-
-       {% for i in range %}
-      <li data-target="#demo" data-slide-to="{{i}}" ></li>
-      {% endfor %}
-    </ul>
-
-<!-- left and right controls for the slide -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
-
 </div>
 
- 
+
 </div>
 </div>
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product
 from .forms import ProductForm
-from math import ceil	
+from math import ceil
 from django.conf import settings
 from buyerform.forms import buyerForm
 from django.template.loader import get_template, render_to_string
@@ -13,10 +13,9 @@ def home_view(request):
 	products = Product.objects.all()
 	print(products)
 	n = len(products)
-	nSlides = n//4 + ceil((n/4)-(n//4))
-	params = {'no_of_slides':nSlides, 'range': range(1,nSlides),'product': products}
+	
 	template='home.html'
-	return render(request, template, params)
+	return render(request, template)
 
 
 def product_create_view(request):
@@ -29,18 +28,12 @@ def product_create_view(request):
 
 
 
+
 def product_detail_view(request):
-	allProds = []
-	catprods = Product.objects.values('category', 'id')
-	cats = {item['category'] for item in catprods}
-	for cat in cats:
-		prod = Product.objects.filter(category=cat)
-		n = len(prod)
-		nSlides = n // 4 + ceil((n / 4) - (n // 4))
-		allProds.append([prod, range(1, nSlides), nSlides])
-		params = {'allProds':allProds}
-	return render(request, "detail.html", params)
-  
+  products = Product.objects.all()
+  params = {'products':products}  
+  return render(request, "detail.html", params)
+
 
 def product_detailed_view(request, my_id):
 	if request.method == 'GET':
@@ -54,29 +47,34 @@ def product_detailed_view(request, my_id):
 			Phone_Number = form.cleaned_data['Phone_Number']
 			subject	='Mail from .Connect'
 			name = form.cleaned_data['name']
+			title = object1.title
 			message = '.'
 			from_email	= settings.EMAIL_HOST_USER
 			maildyn={
+			            'my_id': my_id,
 						'name': name,
 						'img': img,
 						'Phone_Number': Phone_Number,
-						
+						'title': title,
+
 					}
 			html_message= render_to_string('email.html',maildyn)
 		try:
 			send_mail(subject,message, from_email, [to_email],html_message=html_message)
 		except BadHeaderError:
 			return HttpResponse('Invalid header found.')
-		return HttpResponse('Thanks your details are noted')
-		
+		return render(request, "buyerForm1.html", {'form': form})
+
 	return render(request, "buyerForm.html", {'form': form})
-  
-    
+
+
 def product_delete_view(request, my_id):
 	if request.method=='GET':
 		object2 = Product.objects.get(id=my_id)
 		object2.delete()
-	return HttpResponse('your product has been deleted')
+	return render(request, "deleteview.html" )
+
+
 
 
 
