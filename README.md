@@ -2,6 +2,5 @@ DEMO: [https://grietconnect.pythonanywhere.com](https://grietconnect.pythonanywh
 
 .Connect 
 
-.CONNECT, A website for posting Ads and buying the items from Ads with Automated Email System.
+.CONNECT, A website for posting Ads, buying, selling and exchanging items with Automated Email System.
 
-First Project Done in 2019 using Django (Python Framework).
