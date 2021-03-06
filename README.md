@@ -1,4 +1,5 @@
-DEMO: [a link](https://grietconnect.pythonanywhere.com)
+DEMO: [a DemoLink](https://grietconnect.pythonanywhere.com)
+
 .Connect 
 
 .CONNECT, A website for posting Ads and buying the items from Ads with Automated Email System.
