@@ -1,4 +1,4 @@
-DEMO: [a DemoLink](https://grietconnect.pythonanywhere.com)
+DEMO: [DemoLink](https://grietconnect.pythonanywhere.com)
 
 .Connect 
 
