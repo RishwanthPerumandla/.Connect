@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'grietconnect@gmail.com'
-EMAIL_HOST_PASSWORD = 'grietconnect@123'
+EMAIL_HOST_PASSWORD = 'griet@connect123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -31,7 +31,7 @@ SECRET_KEY = 'ytjy8&#x+hn^2+e2)svg$a#g7!cog%k@v_ad!+ob!txq))5^5w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['grietconnect.pythonanywhere.com']
+ALLOWED_HOSTS = ['grietconnect.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'buyerform',
     'crispy_forms',
 
 ]

@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product
-from .forms import ProductForm
+from .forms import ProductForm, buyerForm
 from math import ceil
 from django.conf import settings
-from buyerform.forms import buyerForm
 from django.template.loader import get_template, render_to_string
 from django.core.mail import send_mail, BadHeaderError
 
